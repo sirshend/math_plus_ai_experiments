@@ -1,4 +1,4 @@
-cmo_ablution_problem_set = [
+cmo_ablution_problems = [
   {
     "problem_number": 1,
     "question": "n players stand in a circle and each initially votes for the person on their left. In each of n rounds, each player updates their vote such that if a votes for b and b votes for c, then a changes their vote to c. Prove that after n rounds, players will not vote for the same person",
