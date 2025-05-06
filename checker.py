@@ -22,16 +22,16 @@ class LMModel:
 
     def __call__(self, prompt: str):
         
-        system_prompt = (
-            """You are a professional mathematician and are tasked with solving some competition math problems. You will be given a question, and you have to find the correct solution to it. Think step-by-step and give a detailed explanation of your answer. Each step should be technically correct. Your output should be in the following format: 
-            # STEP BY STEP EXPLANATION
-            <detailed explanation of your thought process>
-            # SKILLS and SKILL LEVEL USED
-            <Answer can be ALGEBRA, GEOMETRY, ANALYSIS, TRIGONOMETRY, TOPOLOGY, ALGEBRA+CALCULUS or any combination of skills expected in an advanced highschool or undergraduate or graduate curriculum. Also mention the difficulty level of the question, high school, undergraduate, graduate or research level. This section should not contain anything other than two comma separated values, first being skill and second being level. For multiple skills, separate skills using + and not comma>
-            # Solution
-            SOLUTION: <solution>
-            """
-        )
+#         system_prompt = (
+#             """You are a professional mathematician and are tasked with solving some competition math problems. You will be given a question, and you have to find the correct solution to it. Think step-by-step and give a detailed explanation of your answer. Each step should be technically correct. Your output should be in the following format: 
+#             # STEP BY STEP EXPLANATION
+#             <detailed explanation of your thought process>
+#             # SKILLS and SKILL LEVEL USED
+#             <Answer can be ALGEBRA, GEOMETRY, ANALYSIS, TRIGONOMETRY, TOPOLOGY, ALGEBRA+CALCULUS or any combination of skills expected in an advanced highschool or undergraduate or graduate curriculum. Also mention the difficulty level of the question, high school, undergraduate, graduate or research level. This section should not contain anything other than two comma separated values, first being skill and second being level. For multiple skills, separate skills using + and not comma>
+#             # Solution
+#             SOLUTION: <solution>
+#             """
+#         )
 
         # Added prompts for self reflection
 #         system_prompt = (
@@ -49,6 +49,26 @@ class LMModel:
 #             """
             
 #         )
+        
+    
+        # Prompts for the ablation study with self reflection, the model has been prompted to know that the problem statement may be wrong, and its soundness has to be found by the model before attempting any further solutions 
+        system_prompt = (
+            """You are a professional mathematician and are tasked with solving some competition math problems. You will be given a question. The question itself maybe wrong or have minute mistake. First you have to check the soundness of the problem, and if it is correct then you have to find the correct solution to it. If the problem statement is not correct, just say it is not correct and stop at step by step explanation stage. Think step-by-step and give a detailed explanation of your answer. Each step should be technically correct. Your output should be in the following format: 
+            # SOUNDNESS OF THE PROBLEM
+            <Is the problem correct/sound or not. This should be a YES or NO answer, followed by short explanation>
+            # STEP BY STEP EXPLANATION
+            <detailed explanation of your thought process>
+            # SKILLS and SKILL LEVEL USED
+            <Answer can be ALGEBRA, GEOMETRY, ANALYSIS, TRIGONOMETRY, TOPOLOGY, ALGEBRA+CALCULUS or any combination of skills expected in an advanced highschool or undergraduate or graduate curriculum. Also mention the difficulty level of the question, high school, undergraduate, graduate or research level. This section should not contain anything other than two comma separated values, first being skill and second being level. For multiple skills, separate skills using + and not comma>
+            # Initial Solution
+            INITIAL SOLUTION: <initial solution>
+            
+            # Final Solution
+            <reflect on your initial solution, try to find logical inconsistencies if any. And write the final solution
+            FINAL SOLUTION: <final solution> 
+            """
+            
+        )
 
         payload = {
             "model": self.model,
