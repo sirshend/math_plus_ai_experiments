@@ -23,22 +23,24 @@ class LMModel:
     def __call__(self, prompt: str):
         
 #         system_prompt = (
-#             """You are a professional mathematician and are tasked with solving some competition math problems. You are will be given a question, and you have to find the correct solution to it. Think step-by-step and give a detailed explanation of your answer. Each step should be technically correct. Your output should be in the following format: 
+#             """You are a professional mathematician and are tasked with solving some competition math problems. You will be given a question, and you have to find the correct solution to it. Think step-by-step and give a detailed explanation of your answer. Each step should be technically correct. Your output should be in the following format: 
 #             # STEP BY STEP EXPLANATION
 #             <detailed explanation of your thought process>
 #             # SKILLS and SKILL LEVEL USED
-#             <Answer can be ALGEBRA, GEOMETRY, ANALYSIS, TRIGONOMETRY, TOPLOGY, ALGEBRA+CALCULUS or any combination of skills expected in an advanced highschool or undergraduate or graduate curriculum. Also mention the difficulty level of the question, high school, undergraduate, graduate or research level. This section should not contain anything other than two comma separated values, first being skill and second being level. For multiple skills, separate skills using + and not comma>
+#             <Answer can be ALGEBRA, GEOMETRY, ANALYSIS, TRIGONOMETRY, TOPOLOGY, ALGEBRA+CALCULUS or any combination of skills expected in an advanced highschool or undergraduate or graduate curriculum. Also mention the difficulty level of the question, high school, undergraduate, graduate or research level. This section should not contain anything other than two comma separated values, first being skill and second being level. For multiple skills, separate skills using + and not comma>
 #             # Solution
 #             SOLUTION: <solution>
 #             """
+
+        # Added prompts for self reflection
         system_prompt = (
-            """You are a professional mathematician and are tasked with solving some competition math problems. You are will be given a question, and you have to find the correct solution to it. Think step-by-step and give a detailed explanation of your answer. Each step should be technically correct. Your output should be in the following format: 
+            """You are a professional mathematician and are tasked with solving some competition math problems. You will be given a question, and you have to find the correct solution to it. Think step-by-step and give a detailed explanation of your answer. Each step should be technically correct. Your output should be in the following format: 
             # STEP BY STEP EXPLANATION
             <detailed explanation of your thought process>
             # SKILLS and SKILL LEVEL USED
-            <Answer can be ALGEBRA, GEOMETRY, ANALYSIS, TRIGONOMETRY, TOPLOGY, ALGEBRA+CALCULUS or any combination of skills expected in an advanced highschool or undergraduate or graduate curriculum. Also mention the difficulty level of the question, high school, undergraduate, graduate or research level. This section should not contain anything other than two comma separated values, first being skill and second being level. For multiple skills, separate skills using + and not comma>
+            <Answer can be ALGEBRA, GEOMETRY, ANALYSIS, TRIGONOMETRY, TOPOLOGY, ALGEBRA+CALCULUS or any combination of skills expected in an advanced highschool or undergraduate or graduate curriculum. Also mention the difficulty level of the question, high school, undergraduate, graduate or research level. This section should not contain anything other than two comma separated values, first being skill and second being level. For multiple skills, separate skills using + and not comma>
             # Initial Solution
-            INITIAL SOLUTION: <inital solution>
+            INITIAL SOLUTION: <initial solution>
             
             # Final Solution
             <reflect on your initial solution, try to find logical inconsistencies if any. And write the final solution
