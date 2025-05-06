@@ -62,13 +62,12 @@ from checker import LMModel
 
 model = LMModel()
 
-# change the json accordingly
 for problem in cjmo_problems:
     prompt = f"QUESTION: {problem['question']}"
     print(f"\n <---------- Problem {problem['problem_number']} ---------->")
     print(f"\n #### Question {problem['question']}")
     try:
         response = model(prompt)
-        print(response[0])
+        print(f"\n #### Solution {response[0]}")
     except Exception as e:
         print(f"Error processing Problem {problem['problem_number']}: {e}")
