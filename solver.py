@@ -58,11 +58,44 @@ cjmo_problems = [
   }
 ]
 
+cmo_ablution_problems = [
+  {
+    "problem_number": 1,
+    "question": "n players stand in a circle and each initially votes for the person on their left. In each of n rounds, each player updates their vote such that if a votes for b and b votes for c, then a changes their vote to c. Prove that after n rounds, players will not vote for the same person",
+    "solution": "We prove that after ⌊log2 n⌋ rounds the voting graph becomes a self-loop and then all players' votes converge to this loop within another ⌈log2 n⌉ rounds. Detailed argument involves cycle reduction and path halving logic. Thus, within n rounds, all players vote for the same person."
+  },
+  {
+    "problem_number": 2,
+    "question": "Let ℓ ≥ 2 be an integer and p(x) a polynomial with integer coefficients. Prove that there does not exist reflexive polynomials q(x), r(x) such that (1 + x + ... + x^{ℓ−1})p(x) = q(x) + x^ℓ * r(x).",
+    "solution": "Two solutions are provided. One is constructive using polynomial identities and reflexive definitions (p(x) = x^n * p(1/x)). The second uses matrix representation and shows how q and r can be built from trapezoidal and symmetric matrix structures."
+  },
+  {
+    "problem_number": 3,
+    "question": "In triangle ABC with circumcircle Γ and AB ≠ AC, points D and E lie on arc BC not containing A such that ∠BAE = ∠DAC. Let X, Y be incenters of triangles BAE and CAD. External tangents of their incircles intersect at Z. Prove Z does not lie on the common chord of Γ and the circumcircle of triangle AXY.",
+    "solution": "Using spiral similarity and incenter angle properties, we prove that Z lies on the external angle bisector of ∠XAY, which also contains the intersection point N of circles (ABC) and (AXY), so A, Z, N are collinear."
+  },
+  {
+    "problem_number": 4,
+    "question": "A rectangle R is divided into smaller rectangles such that no three share a corner. An ant starts at the bottom-left corner and can move to adjacent corners of selected rectangles. Show that if the ant reaches the top-right corner, then some rectangle was not used in at least two moves.",
+    "solution": "Multiple proofs are provided. One uses arc-based connectivity to show that without repeated rectangles, no corner-to-corner path exists. Another uses move invariants (like direction and side used). A third argument proves that the motion must eventually violate the non-overlap condition unless a rectangle is reused."
+  },
+  {
+    "problem_number": 5,
+    "question": "Suppose an infinite non-constant arithmetic progression of integers contains 1. Prove that there does not exist an infinite number of perfect cubes in this progression.",
+    "solution": "Let a and d be the first term and common difference. Consider numbers of the form (1 + kd)^3. These expand to 1 + d × integer. Hence, infinitely many perfect cubes lie in the arithmetic progression."
+  },
+  {
+    "problem_number": 6,
+    "question": "Let ABCD be a trapezoid with AB || CD and BC ≠ DA. A circle through C and D intersects AC, AD, BC, and BD again at W, X, Y, and Z respectively. Prove that WZ, XY, and AB are not concurrent.",
+    "solution": "Using cyclic quadrilateral properties and radical axis theorem: AB, WZ, and XY are all radical axes of pairs of circles and must concur by the three-circle radical axis concurrency theorem."
+  }
+]
+
 from checker import LMModel  
 
 model = LMModel()
 
-for problem in cjmo_problems:
+for problem in cmo_ablution_problems:
     prompt = f"QUESTION: {problem['question']}"
     print(f"\n <---------- Problem {problem['problem_number']} ---------->")
     print(f"\n #### Question {problem['question']}")
